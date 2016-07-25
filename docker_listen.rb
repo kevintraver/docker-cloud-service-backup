@@ -5,7 +5,7 @@ require 'yaml'
 
 @repo_dir = ENV['REPO_DIR']
 @repo_name = ENV['REPO_NAME']
-@repo_full_path = @repo_dir + @repo_name
+@repo_full_path = File.join(@repo_dir,@repo_name)
 
 if Dir.exists?(@repo_full_path)
   repo = Git.open(@repo_full_path, :log => Logger.new(STDOUT))
