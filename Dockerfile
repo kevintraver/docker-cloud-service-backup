@@ -1,8 +1,9 @@
-FROM ruby:2.3.1
+FROM ruby:2.3.1-alpine
 MAINTAINER Kevin Traver
-RUN apt-get -y update
-RUN apt-get -y upgrade
-RUN apt-get -y install git
+RUN apk update && apk upgrade
+RUN apk add build-base
+RUN apk add git
+RUN apk add openssh
 
 RUN mkdir -p /root/.ssh
 
