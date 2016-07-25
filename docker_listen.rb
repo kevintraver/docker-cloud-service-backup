@@ -37,10 +37,10 @@ events.on(:message) do |event|
       File.open(@repo_full_path + "/config/#{stack.name}.yaml","w") do |f|
         f.write(stack.export.to_yaml)
       end
+      repo.add(:all=>true)
+      repo.commit("#{stack.name} updated")
+      repo.push
     end
-    repo.add(:all=>true)
-    repo.commit("#{stack.name} updated")
-    repo.push
   end
 
 end
