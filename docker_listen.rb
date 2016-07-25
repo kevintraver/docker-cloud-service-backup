@@ -13,7 +13,9 @@ else
   FileUtils.mkdir_p @repo_full_path
   repo = Git.clone(ENV['REPO_URL'], @repo_name, :path => @repo_dir, :log => Logger.new(STDOUT))
 end
-repo.config('user.name', 'Docker Cloud')
+
+repo.config('user.name', ENV['GIT_REPO_USERNAME'])
+repo.config('user.email', ENV['GIT_REPO_EMAIL'])
 
 FileUtils.mkdir_p @repo_full_path + '/config'
 
